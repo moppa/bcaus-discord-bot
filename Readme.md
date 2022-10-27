@@ -5,7 +5,8 @@
 2. Create virtual environment `python3 -m venv .venv`
 3. Activate virtual environment `source .venv/bin/activate`
 4. Install requirements `pip install -r requirements.txt`
-5. Copy `config.json.example` to `config.json` and add any missing secrets
+5. Copy `bot.json.example` to `bot.json` and add any missing secrets
+6. Update your bot.json to include the modules/cogs you want your bot to run
 
 # Run python script localy
 
