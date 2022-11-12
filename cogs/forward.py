@@ -9,15 +9,16 @@ class Forward(commands.Cog):
         self.bot = bot
         self.config = config
         self.channels = {}
+        self.logger = logging.getLogger(__class__.__name__)
 
     @commands.Cog.listener()
     async def on_ready(self):
-        logging.info('Initializing channel forwarding config')
+        self.logger.info('Initializing channel forwarding config')
         for sourceKey in self.config:
             self.channels[int(sourceKey)] = []
-            logging.debug(f'sourcekey: {sourceKey}')
+            self.logger.debug(f'sourcekey: {sourceKey}')
             for destKey in self.config[sourceKey]:
-                logging.debug(f'destKey: {destKey}')
+                self.logger.debug(f'destKey: {destKey}')
                 channel = self.bot.get_channel(destKey)
                 self.channels[int(sourceKey)].append(channel)
 
@@ -28,11 +29,11 @@ class Forward(commands.Cog):
         try:
             source = self.channels[msg.channel.id]
             if (source):
-                logging.debug(
+                self.logger.debug(
                     f'Received message in: #{msg.channel.name} ({msg.channel.id}) from {msg.author.display_name}')
                 destination: discord.TextChannel
                 for destination in source:
-                    logging.debug(
+                    self.logger.debug(
                         f'Forwarding to: #{destination.name} ({destination.id})')
                     name = '**' + msg.author.display_name + '**: '
                     content = name + msg.content

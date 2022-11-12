@@ -7,6 +7,7 @@
 4. Install requirements `pip install -r requirements.txt`
 5. Copy `bot.json.example` to `bot.json` and add any missing secrets
 6. Update your bot.json to include the modules/cogs you want your bot to run
+7. Copy any .example configs in config/ and put in your values depending on which modules you load
 
 # Run python script localy
 

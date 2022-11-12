@@ -4,6 +4,6 @@
   "commandPrefix": "!x ",
   "modules": [
     "forward",
-    "otherModule"
+    "hauling"
   ]
 }
