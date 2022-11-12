@@ -58,7 +58,7 @@ class Hauling(commands.Cog):
 
         await self.channel.send(embed=embed)
 
-    @tasks.loop(minutes=1.0)
+    @tasks.loop(minutes=30.0)
     async def check_hauling_contracts(self):
         try:
             contracts = await seat.contracts.get_contracts(
