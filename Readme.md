@@ -21,7 +21,7 @@
 
 ## Run image and mount local config folder
 
-`docker run --rm -it -v ${PWD}/config:/usr/src/app/config bcaus-bot:local`
+`docker run --rm -it -v ${PWD}/data:/usr/src/app/data -v ${PWD}/config:/usr/src/app/config bcaus-bot:local`
 
 # Sample Cog
 
