@@ -1,4 +1,9 @@
 {
   "botToken": "",
-  "logLevel": "DEBUG"
+  "logLevel": "DEBUG",
+  "commandPrefix": "!x ",
+  "modules": [
+    "forward",
+    "hauling"
+  ]
 }
