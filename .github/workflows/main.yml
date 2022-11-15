@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  asdf:
+  gitversion:
     runs-on: ubuntu-latest
     steps:
       - name: Install GitVersion
@@ -55,4 +55,4 @@ jobs:
         run: |
           git tag ${{ steps.gitversion.outputs.semVer }}
       - name: Push git tag
-        run: git push origin${{ steps.gitversion.outputs.semVer }}
+        run: git push origin ${{ steps.gitversion.outputs.semVer }}
