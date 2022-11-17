@@ -1,7 +1,7 @@
 {
-  "botToken": "",
+  "botToken": "MTAzMzM5MTI4MTM4MjA5NzAyNg.GqA6fn.-CfoICWptfsKmMdl6Ze9qMUzpkBXfhS71vDcBM",
   "logLevel": "DEBUG",
-  "commandPrefix": "!x ",
+  "commandPrefix": "!e ",
   "modules": [
     "forward",
     "hauling"
