@@ -24,25 +24,31 @@ class Price(commands.Cog):
                 return
 
             item = " ".join(args).strip()
-            amount = "1"
+
+            url = "https://evepraisal.com/appraisal/structured.json?persist=no"
             market = "jita"
 
-
-            url = "https://evepraisal.com/appraisal"
-            payload = {
-                'raw_textarea': item + ' 1',
-                'market': market,
+            payload = json.dumps({
+                "market_name": market,
+                "items": [
+                    {
+                        "name": item
+                    }
+                ]
+            })
+            headers = {
+                'Content-Type': 'application/json'
             }
-            r = requests.post(url, params=payload)
-            appraisal_id = r.headers['X-Appraisal-Id']
-            appraisal_url = "https://evepraisal.com/a/{}.json".format(appraisal_id)
-            result = requests.get(appraisal_url).json()
-    
-            sell_avg = float(result["items"][0]["prices"]["sell"]["avg"])
-            buy_avg = float(result["items"][0]["prices"]["buy"]["avg"])
+
+            response = requests.post(url, headers=headers, data=payload)
+            result = json.loads(response.text)
+
+            sell_avg = float(result["appraisal"]["items"][0]["prices"]["sell"]["avg"])
+            buy_avg = float(result["appraisal"]["items"][0]["prices"]["buy"]["avg"])
 
             await ctx.channel.send(f"{market}: In average {item} sells for: {sell_avg:,.2f} and is bought for: {buy_avg:,.2f}")
-        except KeyError:
+        except KeyError as ke:
+            print(ke)
             await ctx.channel.send(f"I could not find the item you were looking for.")
             return
         
